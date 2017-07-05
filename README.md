@@ -2,7 +2,7 @@ IMPORTANT
 =======
 This is a temporary repository, it was copied from the original enzyme repo becuase enzyme currently does not support react 16. see: https://github.com/airbnb/enzyme/issues/928
 
-Usage is at your own risk (not all features are tested) Once enzyme will support this repo should not be used!
+Usage is at your own risk (not all features are tested) Once enzyme supports react 16 this repo should not be used!
 
 Enzyme
 =======
