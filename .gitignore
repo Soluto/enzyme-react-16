@@ -29,7 +29,6 @@ node_modules
 # Jetbrains IDEs
 .idea
 
-/build
 _book
 
 # Only apps should have lockfiles
