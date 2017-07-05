@@ -91,12 +91,11 @@ function createWrapperComponent(node) {
       key: 'getWrappedComponent',
       value: function () {
         function getWrappedComponent() {
-          var component = this._reactInternalInstance._renderedComponent;
-          var inst = component.getPublicInstance();
-          if (inst === null) {
-            return component._instance;
+          if (this._reactInternalInstance._instance) {
+            return this._reactInternalInstance._instance;
+          } else {
+            return this._reactInternalInstance;
           }
-          return inst;
         }
 
         return getWrappedComponent;

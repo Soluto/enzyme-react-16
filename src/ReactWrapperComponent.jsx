@@ -34,12 +34,12 @@ export default function createWrapperComponent(node, options = {}) {
       return inst;
     }
     getWrappedComponent() {
-      const component = this._reactInternalInstance._renderedComponent;
-      const inst = component.getPublicInstance();
-      if (inst === null) {
-        return component._instance;
+      if (this._reactInternalInstance._instance) {
+        return this._reactInternalInstance._instance;
       }
-      return inst;
+      else {
+        return this._reactInternalInstance;
+      }              
     }
     setChildContext(context) {
       return new Promise(resolve => this.setState({ context }, resolve));
