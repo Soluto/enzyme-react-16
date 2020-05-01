@@ -5,7 +5,7 @@
   "homepage": "http://airbnb.io/enzyme/",
   "main": "build",
   "scripts": {
-    "prepublish": "not-in-publish || (npm run clean && npm run build && safe-publish-latest)",
+    "prepublish": "yarn run snyk-protect && not-in-publish || (npm run clean && npm run build && safe-publish-latest)",
     "preversion": "npm run clean && npm run check",
     "postversion": "git push && git push --tags && npm run clean && npm run docs:publish",
     "version": "npm run build",
@@ -34,7 +34,8 @@
     "docs:build": "npm run docs:prepare && gitbook build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git fetch git@github.com:airbnb/enzyme.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'update book' && git push git@github.com:airbnb/enzyme.git gh-pages --force",
-    "travis": "babel-node \"$(which istanbul)\" cover --report html _mocha -- test --recursive"
+    "travis": "babel-node \"$(which istanbul)\" cover --report html _mocha -- test --recursive",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -66,7 +67,8 @@
     "object.entries": "^1.0.4",
     "object.values": "^1.0.4",
     "prop-types": "^15.5.10",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -110,5 +112,6 @@
   },
   "peerDependencies": {
     "react": "16.x"
-  }
+  },
+  "snyk": true
 }
